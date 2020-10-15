@@ -1,5 +1,5 @@
 # node-multithreading
-
+Provide an easy implementation of multithreading in node
 ## Installation
 
 ```
