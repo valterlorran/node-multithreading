@@ -10,7 +10,7 @@ export interface ICluser {
     log?: Boolean;
 }
 
-export default function NodeMultithreading(slave:Function, options: ICluser = {}) {
+export default async function NodeMultithreading(slave:Function, options: ICluser = {}) {
     const { 
         isClusterActive = true,
         masterPort = 3000,
@@ -65,7 +65,7 @@ export default function NodeMultithreading(slave:Function, options: ICluser = {}
         }).listen(masterPort);
     } else {
         _log(`Slave ${process.pid} is running`);
-        const server = slave();
+        const server = await slave();
 
         if (isClusterActive) {
             process.on('message', function (message, connection) {
